@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000; /* Outside background black */
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 255, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    transition: box-shadow 0.3s ease;
+    /* Inner background 3D blue shadow effect */
+    background: radial-gradient(circle at top left, rgba(0, 0, 255, 0.1), rgba(0, 0, 0, 0)) no-repeat,
+                radial-gradient(circle at bottom right, rgba(0, 0, 255, 0.2), rgba(0, 0, 0, 0)) no-repeat;
+}
+
+.container:hover {
+    box-shadow: 0 6px 30px rgba(5, 5, 233, 0.834);
+}
+
+h2 {
+    color: #2980b9;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2980b9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #d108a5;
+}
+
+#output {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+#copyBtn {
+    display: none;
+    margin-top: 10px;
+    background-color: #000000;
+}
+
+#copyBtn:hover {
+    background-color: #171c19;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    button, input {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 15px 20px;
+    }
+}

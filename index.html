@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LatLong Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Lat / Long 6 Digit Converter</h2>
+        <img src="dp.jpg" alt="Image 2"style="width:200px; height: 200px;">
+        <input type="text" id="latlong" placeholder="Paste Lat Long here (e.g., 22.81509234943916, 88.34292188891786)">
+        <button onclick="convertLatLong()">Click 👆 </button>
+        <div id="output"></div>
+        <button id="copyBtn" onclick="copyLatLong()">Copy </button>
+    </div>
+
+    <script>
+        function convertLatLong() {
+            const input = document.getElementById("latlong").value;
+            const [lat, long] = input.split(/[,\s]+/).map(coord => parseFloat(coord.trim()).toFixed(6));
+            
+            if (!isNaN(lat) && !isNaN(long)) {
+                document.getElementById("output").textContent = `Converted LatLong: ${lat} ${long}`;
+                document.getElementById("copyBtn").style.display = "block";
+            } else {
+                document.getElementById("output").textContent = "Invalid input! Please enter valid latitude and longitude.";
+                document.getElementById("copyBtn").style.display = "none";
+            }
+        }
+
+        function copyLatLong() {
+            const outputText = document.getElementById("output").textContent;
+            if (outputText.includes("Converted LatLong")) {
+                const latLongText = outputText.replace("Converted LatLong: ", "");  
+                
+                navigator.clipboard.writeText(latLongText).then(() => {
+                    document.getElementById("copyBtn").textContent = "Copied! 😊";
+                    setTimeout(() => {
+                        document.getElementById("copyBtn").textContent = "Copy to Clipboard";
+                        document.getElementById("latlong").value = ""; // Clear input
+                        document.getElementById("output").textContent = ""; // Clear output
+                        document.getElementById("copyBtn").style.display = "none"; // Hide copy button
+                    }, 2000);
+                }).catch(err => {
+                    alert("Failed to copy text: ", err);
+                });
+            } else {
+                alert("Nothing to copy! Please convert a valid LatLong first.");
+            }
+        }
+    </script>
+</body>
+</html>
